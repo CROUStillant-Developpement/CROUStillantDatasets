@@ -16,7 +16,7 @@ class Dataset(BaseDataset):
         super().__init__(
             name="Restaurants",
             dataset_id="67d5b9d226ec985c447e87a4",
-            dataset_description="L'ensemble des points de restauration du CROUS en France et en Outre-Mer.\n\nLes données sont préalablement nettoyées avant d'être téléversées.\n\nLes données sont mises à jour automatiquement chaque jour à 01h00.",
+            dataset_description="L'ensemble des points de restauration du CROUS en France et en Outre-Mer.\n\nLes données sont préalablement nettoyées avant d'être téléversées.\n\nLes données sont mises à jour automatiquement chaque jour à 01h00.\n\nVous pouvez aussi retrouver toutes les données via notre API : https://www.data.gouv.fr/fr/dataservices/api-croustillant/",
             dataset_slug="points-de-restauration-du-crous",
             dataset_metadata={
                 "owner": "67b76d8d858371cef2625464",
