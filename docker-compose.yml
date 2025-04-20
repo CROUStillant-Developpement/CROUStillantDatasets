@@ -1,0 +1,16 @@
+services:
+  datasets:
+    container_name: datasets
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - CROUStillantNetwork
+
+networks:
+  CROUStillantNetwork:
+    external: true
