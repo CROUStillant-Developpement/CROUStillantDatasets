@@ -1,0 +1,1 @@
+0 0 * * * uv run --project /CROUStillantDatasets /CROUStillantDatasets/__main__.py >> /CROUStillantDatasets/crontab.log
