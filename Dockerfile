@@ -9,4 +9,6 @@ WORKDIR /CROUStillantDatasets
 
 RUN uv sync --frozen
 
+RUN crontab crontab
+
 CMD ["crond", "-f"]
