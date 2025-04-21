@@ -60,7 +60,7 @@ class Worker:
             "Lancement de la mise à jour des jeux de données du CROUStillant.\n\nCette tâche est exécutée automatiquement chaque jour à 01h00."
         )
 
-        for dataset in os.listdir(self.path + "CROUStillantDatasets/datasets"):
+        for dataset in os.listdir(self.path + "/CROUStillantDatasets/datasets"):
             if dataset.endswith(".py") and dataset != "__init__.py":
                 dataset_name = dataset[:-3]
 
