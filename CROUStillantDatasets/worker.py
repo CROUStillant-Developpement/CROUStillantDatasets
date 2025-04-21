@@ -3,6 +3,7 @@ import os
 from .utils.webhook import Webhook
 from DataGouvPy import DataGouv
 from asyncpg import Pool, create_pool
+from pathlib import Path
 
 
 class Worker:
@@ -18,6 +19,8 @@ class Worker:
 
         self.client = None
         self.notifications = None
+
+        self.path = str(Path(__file__).parents[0].parents[0])
 
 
     @classmethod
@@ -57,7 +60,7 @@ class Worker:
             "Lancement de la mise à jour des jeux de données du CROUStillant.\n\nCette tâche est exécutée automatiquement chaque jour à 01h00."
         )
 
-        for dataset in os.listdir("CROUStillantDatasets/datasets"):
+        for dataset in os.listdir(self.path + "CROUStillantDatasets/datasets"):
             if dataset.endswith(".py") and dataset != "__init__.py":
                 dataset_name = dataset[:-3]
 
