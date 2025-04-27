@@ -31,6 +31,6 @@ class Webhook:
             timestamp=datetime.now()
         )
         embed.set_footer(text=f"CROUStillant Développement © 2022 - {datetime.now(timezone('Europe/Paris')).year} | Tous droits réservés")
-        embed.set_image(url="https://croustillant.bayfield.dev/banner-small.png")
+        embed.set_image(url="https://croustillant.menu/banner-small.png")
 
         await self.webhook.send(embed=embed)
