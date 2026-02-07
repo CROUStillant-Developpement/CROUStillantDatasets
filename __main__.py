@@ -36,6 +36,7 @@ async def main():
     )
     await worker.setup(client, notifications)
     await worker.run()
+    await worker.close()
 
     await session.close()
 

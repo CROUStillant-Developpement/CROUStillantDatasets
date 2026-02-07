@@ -1,7 +1,14 @@
 from aiohttp import ClientSession
-from discord import Embed, Webhook as DiscordWebhook
+from discord import Webhook as DiscordWebhook
 from datetime import datetime
 from pytz import timezone
+
+from .views import WorkerView
+from os import environ
+from dotenv import load_dotenv
+
+
+load_dotenv(dotenv_path=".env")
 
 
 class Webhook:
@@ -24,13 +31,13 @@ class Webhook:
 
         :param description: Description of the message.
         """
-        embed = Embed(
-            title="CROUStillant Datasets",
-            description=description,
-            color=int("6A9F56", base=16),
-            timestamp=datetime.now()
-        )
-        embed.set_footer(text=f"CROUStillant Développement © 2022 - {datetime.now(timezone('Europe/Paris')).year} | Tous droits réservés")
-        embed.set_image(url="https://croustillant.menu/banner-small.png")
+        year = datetime.now(timezone("Europe/Paris")).year
 
-        await self.webhook.send(embed=embed)
+        view = WorkerView(
+            content=description,
+            thumbnail_url=environ["THUMBNAIL_URL"],
+            banner_url=environ["IMAGE_URL"],
+            footer_text="CROUStillant Développement © 2022 - {year} | Tous droits réservés.".format(year=year),
+        )
+
+        await self.webhook.send(view=view)

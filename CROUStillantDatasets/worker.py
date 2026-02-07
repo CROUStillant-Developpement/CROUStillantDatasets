@@ -57,7 +57,7 @@ class Worker:
             raise ValueError("Worker is not connected to the database or the data.gouv.fr client isn't initialised yet!")
 
         await self.notifications.send(
-            "Lancement de la mise à jour des jeux de données du CROUStillant.\n\nCette tâche est exécutée automatiquement chaque jour à 01h00."
+            "### CROUStillant Datasets\n\n🚀 Lancement de la mise à jour des jeux de données du CROUStillant sur data.gouv.fr..."
         )
 
         for dataset in os.listdir(self.path + "/CROUStillantDatasets/datasets"):
@@ -84,19 +84,26 @@ class Worker:
                     )
                 except Exception as e:
                     print(f"Error updating dataset {dataset_name}: {e}")
-
+                    
                     await self.notifications.send(
-                        f"⚠️ Une erreur est survenue lors de la mise à jour du jeu de données `{dataset_instance.name}`"
+                        f"### ⚠️ Erreur !\n\nUne erreur est survenue lors de la mise à jour du jeu de données `{dataset_instance.name}`."
                     )
 
                     continue
 
                 print(f"Dataset {dataset_name} uploaded successfully.")
-
+                
                 await self.notifications.send(
-                    f"Le jeu de données `{dataset_instance.name}` a été mis à jour avec succès !\n\nVous pouvez le retrouver ici : https://www.data.gouv.fr/fr/datasets/{dataset_instance.dataset_slug}/"
+                    f"### ✅ Succès !\n\nLe jeu de données `{dataset_instance.name}` a été mis à jour avec succès !\n\nVous pouvez le retrouver ici : https://www.data.gouv.fr/fr/datasets/{dataset_instance.dataset_slug}/"
                 )
 
         await self.notifications.send(
-            "La mise à jour des jeux de données du CROUStillant est terminée !"
+            "### CROUStillant Datasets\n\nLa mise à jour des jeux de données du CROUStillant est terminée !"
         )
+
+    async def close(self):
+        """
+        Close the database connection.
+        """
+        if self.pool:
+            await self.pool.close()
