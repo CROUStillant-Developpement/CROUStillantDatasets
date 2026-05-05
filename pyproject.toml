@@ -14,7 +14,7 @@ dependencies = [
     "discord-py>=2.5.2",
     "pandas>=2.2.3",
     "python-dotenv>=1.0.1",
-    "pytz>=2025.1",
+    "pytz>=2026.2",
 ]
 
 [tool.uv.sources]
