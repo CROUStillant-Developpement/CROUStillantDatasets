@@ -292,7 +292,7 @@ requires-dist = [
 [[package]]
 name = "datagouvpy"
 version = "0.1.0"
-source = { git = "https://github.com/CROUStillant-Developpement/DataGouvPy#5a16ddd7c02c52c64aa00a937d5b16ca1dcf8128" }
+source = { git = "https://github.com/CROUStillant-Developpement/DataGouvPy#f2fe0a98f2248858d8858755dda9551eea1e761d" }
 dependencies = [
     { name = "aiohttp" },
     { name = "async-timeout" },
